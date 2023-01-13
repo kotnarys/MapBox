@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn{
+  @apply  m-5 rounded-full py-2 px-3 uppercase text-xs font-bold cursor-pointer tracking-wider hover:opacity-80 active:translate-y-1 ring-2 bg-sky-500;
+}

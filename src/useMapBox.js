@@ -1,22 +1,24 @@
-import { useLayoutEffect } from "react";
+import { useMemo, useLayoutEffect } from "react";
 import mapboxgl from "mapbox-gl";
 
 export default function useMapBox({
   id = "map",
   center = [37.61192, 55.76199],
-  zoom = 10,
-  random,
-  ...props
+  zoom = 10
 }) {
   mapboxgl.accessToken =
     "pk.eyJ1Ijoid3JremciLCJhIjoiY2w1MTRsMW41MDI0ejNkcnliczMyNmpjNyJ9.Oydx12NzpiCwXiQ8qKG9-Q";
+
+    const [shirota, dolgota] = center
+
+  const centerMemo = useMemo(() => [shirota, dolgota], [shirota, dolgota]);
 
   useLayoutEffect(() => {
     new mapboxgl.Map({
       container: id,
       style: "mapbox://styles/mapbox/dark-v10",
-      center: center,
+      center: centerMemo,
       zoom: zoom
     });
-  });
+  }, [id, zoom, centerMemo]);
 }

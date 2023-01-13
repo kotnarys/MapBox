@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { render } from "react-dom";
-import useMapBox from "./useMapbox";
-
+import useMapBox from "./useMapBox";
 import "./index.css";
 
 function App() {
@@ -10,10 +9,10 @@ function App() {
   useMapBox({ id: "map", center: [3.0, 2.0], zoom: 5, random: random });
   return (
     <>
-      <button id="rerender" onClick={() => setRandom(Math.random())}>
+      <button className="btn" id="rerender" onClick={React.memo(() => setRandom(Math.random()))}>
         Ререндер!
       </button>
-      <div id="map"></div>
+      <div  id="map"></div>
     </>
   );
 }
